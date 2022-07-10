@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MarineSoft</string>
+    <string name="background">Background</string>
+    <string name="logo">Logo</string>
+    <string name="welcome_to_marinesoft">Welcome To MarineSoft</string>
+    <string name="signup_signin">SignUp/SignIn</string>
+</resources>
