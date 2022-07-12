@@ -2,7 +2,7 @@ package com.example.marinesoft
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -10,9 +10,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-    }
-    fun signUpButton(view : View){
-            val intent = Intent(this, MainActivity2::class.java)
+
+        val registerButton = findViewById<Button>(R.id.registerButton)
+        val signIn = findViewById<Button>(R.id.signInButton)
+
+        registerButton.setOnClickListener{
+            val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
+        }
+
+        signIn.setOnClickListener{
+        val intent = Intent(this, SignInActivity::class.java)
+        startActivity(intent)
+
+        }
     }
 }

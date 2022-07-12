@@ -3,6 +3,12 @@
     <string name="background">Background</string>
     <string name="logo">Logo</string>
     <string name="welcome_to_marinesoft">Welcome To MarineSoft</string>
-    <string name="signup_signin">SignUp/SignIn</string>
     <string name="marinesoft">MarineSoft</string>
+    <string name="signup">SignUp</string>
+    <string name="signin">SignIn</string>
+    <string name="register">Register</string>
+    <string name="example_mail_com">example@mail.com</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="name">Name:</string>
 </resources>
