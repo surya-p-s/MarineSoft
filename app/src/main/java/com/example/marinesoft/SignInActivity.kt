@@ -27,6 +27,8 @@ class SignInActivity : AppCompatActivity() {
         auth = Firebase.auth
 
         val signIn = findViewById<Button>(R.id.signIn)
+        val registerButton = findViewById<Button>(R.id.registerButton)
+
 
         loginemail =findViewById(R.id.emailText1)
         loginpassword = findViewById(R.id.textPassword1)
@@ -45,18 +47,35 @@ class SignInActivity : AppCompatActivity() {
                 }
                 else{
                     Log.w(TAG,"signInWithEmail:failure",task.exception)
-                    Toast.makeText(baseContext, "Authentication Failed.",
+                    Toast.makeText(baseContext, "Authentication Failed.  \n Try Again",
                         Toast.LENGTH_SHORT).show()
-                        updateUI(null)
+                        val intent = Intent(this, SignInActivity::class.java)
+                        startActivity(intent)
                 }
             }
 
         }
 
+        registerButton.setOnClickListener {
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
+        }
+
 
     }
 
+    override fun onStart(){
+        super.onStart()
+        val currentUser= auth.currentUser
+        if(currentUser != null){
+            reload()
+        }
+    }
 
+    private fun reload(){
+        val intent = Intent(this, DetailsPage::class.java)
+        startActivity(intent)
+    }
 
     private fun updateUI(user: FirebaseUser?){
         val intent=Intent(this, DetailsPage::class.java)
