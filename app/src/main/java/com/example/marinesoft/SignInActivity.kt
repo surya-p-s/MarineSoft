@@ -5,8 +5,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -27,7 +29,7 @@ class SignInActivity : AppCompatActivity() {
         auth = Firebase.auth
 
         val signIn = findViewById<Button>(R.id.signIn)
-        val registerButton = findViewById<Button>(R.id.registerButton)
+        val registerButton1 = findViewById<Button>(R.id.registerButton1)
 
 
         loginemail =findViewById(R.id.emailText1)
@@ -56,8 +58,8 @@ class SignInActivity : AppCompatActivity() {
 
         }
 
-        registerButton.setOnClickListener {
-            val intent = Intent(this, SignUpActivity::class.java)
+        registerButton1.setOnClickListener {
+            val intent = Intent(this, DetailsPage::class.java)
             startActivity(intent)
         }
 
@@ -66,19 +68,35 @@ class SignInActivity : AppCompatActivity() {
 
     override fun onStart(){
         super.onStart()
+
+        val signIn=findViewById<Button>(R.id.signIn)
+        val registerButton1 = findViewById<Button>(R.id.registerButton1)
+        val progressBar=findViewById<ProgressBar>(R.id.progressBar)
+        signIn.visibility= View.GONE
+        registerButton1.visibility= View.GONE
+        progressBar.visibility=View.VISIBLE
         val currentUser= auth.currentUser
         if(currentUser != null){
-            reload()
+            updateUI(currentUser)
+        }
+        else{
+            Toast.makeText(baseContext, "LogIn to continue" , Toast.LENGTH_SHORT).show()
+            signIn.visibility= View.VISIBLE
+            registerButton1.visibility= View.VISIBLE
+            progressBar.visibility=View.GONE
         }
     }
 
-    private fun reload(){
-        val intent = Intent(this, DetailsPage::class.java)
-        startActivity(intent)
-    }
 
     private fun updateUI(user: FirebaseUser?){
-        val intent=Intent(this, DetailsPage::class.java)
+        val signIn=findViewById<Button>(R.id.signIn)
+        val registerButton1 = findViewById<Button>(R.id.registerButton1)
+        val progressBar=findViewById<ProgressBar>(R.id.progressBar)
+        signIn.visibility= View.GONE
+        registerButton1.visibility= View.GONE
+        progressBar.visibility=View.VISIBLE
+
+        val intent=Intent(this, DataActivity::class.java)
         intent.putExtra("data",user)
         startActivity(intent)
     }

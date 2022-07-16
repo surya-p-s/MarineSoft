@@ -7,18 +7,21 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/png_20220701_214356_0000"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/png_20220701_214356_0000"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.MarineSoft"
         tools:targetApi="31">
+        <activity
+            android:name=".DataActivity"
+            android:exported="false" />
         <activity
             android:name=".DetailsPage"
             android:exported="false" />
         <activity
             android:name=".SignInActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
